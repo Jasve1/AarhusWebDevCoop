@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<HomePage>
+@{
+	Layout = "Master.cshtml";
+}
+
+@Model.SiteTitle
+
+@Umbraco.RenderMacro("listNewestProjects", new {NumOfProjects="2"})
