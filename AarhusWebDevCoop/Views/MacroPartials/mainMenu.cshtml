@@ -17,16 +17,6 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <a class="navbar-brand" href="@root.Url">@root.Name</a>
     <ul class="navbar-nav">
-        @*@foreach (var menuItem in root.Children.Where("UmbracoNaviHide == false"))
-        {
-            var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
-            var loginAccess = isProtected && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
-
-            if (!isProtected || loginAccess)
-            {
-
-            }
-        }*@
 
         @foreach (var item in root.Children.Where("UmbracoNaviHide == false"))
         {
