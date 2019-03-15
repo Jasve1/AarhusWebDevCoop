@@ -17,20 +17,34 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <a class="navbar-brand" href="@root.Url">@root.Name</a>
     <ul class="navbar-nav">
-        @foreach (var item in selection)
+        @*@foreach (var menuItem in root.Children.Where("UmbracoNaviHide == false"))
         {
-            if(item.Children().Where(x => x.IsVisible()).Count() > 0)
+            var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
+            var loginAccess = isProtected && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
+
+            if (!isProtected || loginAccess)
+            {
+
+            }
+        }*@
+
+        @foreach (var item in root.Children.Where("UmbracoNaviHide == false"))
+        {
+            var isProtected = umbraco.library.IsProtected(item.Id, item.Path);
+            var loginAccess = isProtected && umbraco.library.HasAccess(item.Id, item.Path);
+
+            if (!isProtected || loginAccess)
             {
                 <li class="nav-item dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @item.Name
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @foreach(var subMenuItem in item.Children().Where(x => x.IsVisible()))
+                        @foreach (var subMenuItem in item.Children().Where(x => x.IsVisible()))
                         {
-                            if(subMenuItem.DocumentTypeAlias == "projectItem")
+                            if (subMenuItem.DocumentTypeAlias == "projectItem")
                             {
-                                if(umbraco.library.GetPreValueAsString(
+                                if (umbraco.library.GetPreValueAsString(
                                 subMenuItem.GetPropertyValue<int>("projectStatus")) == "Completed")
                                 {
                                     <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
@@ -51,7 +65,7 @@
                 </li>
             }
         }
-        
+
     </ul>
 </div>
     
