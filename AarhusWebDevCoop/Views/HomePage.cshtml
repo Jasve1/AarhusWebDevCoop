@@ -3,6 +3,12 @@
 	Layout = "Master.cshtml";
 }
 
-@Model.SiteTitle
+<header>
+    <h1>@Model.SiteTitle</h1>
+</header>
 
-@Umbraco.RenderMacro("listNewestProjects", new {NumOfProjects="2"})
+<main>
+    <h3>@Model.MainContent</h3>
+    @Umbraco.RenderMacro("listNewestProjects", new {NumOfProjects="2"})
+</main>
+

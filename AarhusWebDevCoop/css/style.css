@@ -1,1 +1,101 @@
 /*somestuff*/
+#wrapper{
+    width: 90vw;
+    margin: auto;
+}
+
+.logo{
+    width: 100%;
+}
+
+header{
+    background-color: #6e6e6e;
+    border-radius: 10px;
+    padding: 1vw 2vw;
+    margin-top: 1vw;
+}
+
+header h1{
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-size: 2vw;
+}
+
+main{
+    background-color: #e9e9e9;
+    padding: 3vw;
+    margin-top: -0.3vw;
+}
+
+.Newest_projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 2vw;
+    padding: 0;
+    margin-top: 2vh;
+}
+
+.Newest_projects li{
+    background-color: #007bff;
+    border-radius: 10px;
+    padding: 2vw;
+    list-style: none;
+    transition: ease-in-out 0.25s;
+    box-shadow: #6e6e6e 2px 2px 2px;
+}
+.Newest_projects li:hover{
+    transform: scale(1.4) rotate(10deg);
+}
+.btn{
+    transition: ease-in-out 0.25s;
+}
+.btn:hover{
+    transform: scale(1.4) rotate(10deg);
+}
+
+.Newest_projects a{
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.umb-grid img{
+    width: 100%;
+}
+
+#main-footer{
+    background-color: #f8f9fa;
+    width: 100%;
+    margin-top: 2vw;
+    bottom: 0;
+    padding: 3vw;
+}
+
+.boxed{
+    background-color: #e9e9e9 !important;
+}
+
+.member-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 2vw;
+}
+
+.member-section{
+    padding: 2vw;
+    background-color: #9fc4ec;
+    border-radius: 10px;
+}
+
+.name{
+    margin-bottom: 1vw;
+    font-size: 1.3em;
+}
+.profile-pic{
+    margin: 1vw 0vw;
+    border-radius: 10px;
+}
+
+span{
+    background: none !important;
+}

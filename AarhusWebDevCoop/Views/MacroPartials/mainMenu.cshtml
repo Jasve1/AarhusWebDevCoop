@@ -17,16 +17,6 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <a class="navbar-brand" href="@root.Url">@root.Name</a>
     <ul class="navbar-nav">
-        @*@foreach (var menuItem in root.Children.Where("UmbracoNaviHide == false"))
-        {
-            var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
-            var loginAccess = isProtected && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
-
-            if (!isProtected || loginAccess)
-            {
-
-            }
-        }*@
 
         @foreach (var item in root.Children.Where("UmbracoNaviHide == false"))
         {
@@ -35,35 +25,45 @@
 
             if (!isProtected || loginAccess)
             {
-                <li class="nav-item dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @item.Name
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @foreach (var subMenuItem in item.Children().Where(x => x.IsVisible()))
-                        {
-                            if (subMenuItem.DocumentTypeAlias == "projectItem")
+                if (item.Children.Count() > 0)
+                {
+                    <li class="nav-item dropdown @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @item.Name
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var subMenuItem in item.Children().Where(x => x.IsVisible()))
                             {
-                                if (umbraco.library.GetPreValueAsString(
-                                subMenuItem.GetPropertyValue<int>("projectStatus")) == "Completed")
+                                isProtected = umbraco.library.IsProtected(subMenuItem.Id, subMenuItem.Path);
+                                loginAccess = isProtected && umbraco.library.HasAccess(subMenuItem.Id, subMenuItem.Path);
+
+                                if (!isProtected || loginAccess)
                                 {
-                                    <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
+                                    if (subMenuItem.DocumentTypeAlias == "projectItem")
+                                    {
+                                        if (umbraco.library.GetPreValueAsString(
+                                        subMenuItem.GetPropertyValue<int>("projectStatus")) == "Completed")
+                                        {
+                                            <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
+                                    }
                                 }
                             }
-                            else
-                            {
-                                <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
-                            }
-                        }
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
+                        <a class="nav-link" href="@item.Url">@item.Name</a>
+                    </li>
+                }
             }
-            else
-            {
-                <li class="nav-item @(item.IsAncestorOrSelf(Model.Content) ? "active" : null)">
-                    <a class="nav-link" href="@item.Url">@item.Name</a>
-                </li>
-            }
+
         }
 
     </ul>
