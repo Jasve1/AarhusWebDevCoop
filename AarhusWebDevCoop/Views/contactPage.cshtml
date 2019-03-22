@@ -3,8 +3,10 @@
 	Layout = "Master.cshtml";
 }
 
-<h2>@Model.Name</h2>
+<header>
+    <h1>@Model.Name</h1>
+</header>
 
-<div>
+<main>
     @Html.Action("Index", "ContactFormSurface")
-</div>
+</main>

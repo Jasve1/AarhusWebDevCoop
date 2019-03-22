@@ -4,5 +4,10 @@
 	Layout = "Master.cshtml";
 }
 
-<div>@Html.GetGridHtml(Umbraco.AssignedContentItem, "gridLayout")</div>
+<header>
+    <h1>About</h1>
+</header>
+<main>
+    @Html.GetGridHtml(Umbraco.AssignedContentItem, "gridLayout")
+</main>
 

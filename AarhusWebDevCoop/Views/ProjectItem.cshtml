@@ -1,5 +1,13 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectItem>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ProjectItem>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = "Master.cshtml";
 }
+
+<header>
+    <h1>@Model.ProjectTitle</h1>
+</header>
+
+<main>
+    <p>@Model.ProjectDescription</p>
+</main>

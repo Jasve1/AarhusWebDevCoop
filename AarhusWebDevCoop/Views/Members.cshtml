@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Members>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<header>
+    <h1>Members</h1>
+</header>
+<main class="member-grid">
+    @Html.Partial("memberList")
+</main>
