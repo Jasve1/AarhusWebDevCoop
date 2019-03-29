@@ -1,0 +1,10 @@
+GitHub Repository: https://github.com/Jasve1/AarhusWebDevCoop
+
+Backoffice login
+Admin: USERNAME:jakobkilias0311@gmail.com PASSWORD:Secret123$
+Editor: USERNAME:jane@example.com PASSWORD:password123
+Writer: USERNAME:tim@example.com PASSWORD:password123
+
+Member login
+Active: USERNAME:lis123 PASSWORD:secret1234
+Guest: USERNAME:bob123 PASSWORD:secret1234
